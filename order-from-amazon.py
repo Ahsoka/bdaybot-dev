@@ -6,7 +6,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 
 dotenv_dict = dotenv_values()
-PHONE_OR_EMAIL_ADDRESS, PASSWORD = dotenv_dict['email_or_phone'], dotenv_dict['password']
+PHONE_OR_EMAIL_ADDRESS, PASSWORD, ASIN = (dotenv_dict['email_or_phone'],
+                                          dotenv_dict['password'],
+                                          dotenv_dict['asin'])
 
 driver = webdriver.Chrome()
 driver.get("https://www.amazon.com/")
