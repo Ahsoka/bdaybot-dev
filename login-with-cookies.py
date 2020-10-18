@@ -7,7 +7,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 
-driver = webdriver.Chrome()
+driver = webdriver.Chrome('chrome86-driver.exe')
 
 driver.get("http://amazon.com/")
 
