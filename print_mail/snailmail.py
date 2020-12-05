@@ -43,9 +43,10 @@ pdf.text(44, 86, recipient_addr2)
 
 pdf.add_page()
 pdf.set_margins(0, 0, 0)
-message = f"Happy Birthday {recipient_name}! From the CVHS Bday Team and from Dr. Neat! Have a wonderful day and enjoy your sweet!"
 
-pdf.text(44, 78, message)
+pdf.text(10, 78, f"Happy Birthday {recipient_name}!")
+pdf.text(10, 82, "Have a wonderful day and enjoy your sweet!")
+pdf.text(10, 86, "-CVHS Bday Team")
 
 envelope_file = pathlib.Path('envelope.pdf')
 if envelope_file.exists():
