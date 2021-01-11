@@ -54,5 +54,5 @@ time.sleep(2)
 driver.save_screenshot(str(pathlib.Path("screenshot.png").resolve()))
 
 
-# with pathlib.Path('./cookies.json').open(mode='w') as file:
-#     json.dump(driver.get_cookies(), file, indent=4)
+with pathlib.Path('./cookies.json').open(mode='w') as file:
+    json.dump(driver.get_cookies(), file, indent=4)
