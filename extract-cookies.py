@@ -26,33 +26,36 @@ if os.name == 'posix':
 else:
     driver = webdriver.Chrome('chrome86-driver.exe')
 
-driver.get("https://amazon.com/")
+try:
+    driver.get("https://amazon.com/")
 
-amazon_signin_button = WebDriverWait(driver, 10) \
-                       .until(EC.presence_of_element_located((By.ID, 'nav-link-accountList')))
+    amazon_signin_button = WebDriverWait(driver, 10) \
+                           .until(EC.presence_of_element_located((By.ID, 'nav-link-accountList')))
 
-amazon_signin_button.click()
+    amazon_signin_button.click()
 
-info_form = WebDriverWait(driver, 10) \
-            .until(EC.presence_of_element_located((By.NAME, 'signIn')))
+    info_form = WebDriverWait(driver, 10) \
+                .until(EC.presence_of_element_located((By.NAME, 'signIn')))
 
-email_or_phone = info_form.find_element_by_id('ap_email')
-email_or_phone.send_keys(email)
+    email_or_phone = info_form.find_element_by_id('ap_email')
+    email_or_phone.send_keys(email)
 
-info_form.submit()
+    info_form.submit()
 
-info_form = WebDriverWait(driver, 10) \
-            .until(EC.presence_of_element_located((By.NAME, 'signIn')))
+    info_form = WebDriverWait(driver, 10) \
+                .until(EC.presence_of_element_located((By.NAME, 'signIn')))
 
-passwordbtn = info_form.find_element_by_id('ap_password')
-passwordbtn.send_keys(password)
+    passwordbtn = info_form.find_element_by_id('ap_password')
+    passwordbtn.send_keys(password)
 
-info_form.submit()
+    info_form.submit()
 
-time.sleep(2)
+    time.sleep(2)
 
-driver.save_screenshot(str(pathlib.Path("screenshot.png").resolve()))
+    driver.save_screenshot(str(pathlib.Path("screenshot.png").resolve()))
 
 
-with pathlib.Path('./cookies.json').open(mode='w') as file:
-    json.dump(driver.get_cookies(), file, indent=4)
+    with pathlib.Path('./cookies.json').open(mode='w') as file:
+        json.dump(driver.get_cookies(), file, indent=4)
+finally:
+    driver.quit()
