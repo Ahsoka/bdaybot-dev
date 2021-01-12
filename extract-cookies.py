@@ -20,8 +20,7 @@ if os.name == 'posix':
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument('--headless'); # chrome_options.add_argument('--no-sandbox')
     driver = webdriver.Chrome(executable_path=str(pathlib.Path('chrome86-driver').resolve()),
-                                      chrome_options=chrome_options,
-                                      service_args=['--verbose', f"--log-path={pathlib.Path('logs/chrome.log').resolve()}"])
+                                      chrome_options=chrome_options)
     driver.set_window_size(width=1363, height=1094)
 else:
     driver = webdriver.Chrome('chrome86-driver.exe')
@@ -50,7 +49,7 @@ try:
 
     info_form.submit()
 
-    time.sleep(2)
+    time.sleep(30)
 
     driver.save_screenshot(str(pathlib.Path("screenshot.png").resolve()))
 
