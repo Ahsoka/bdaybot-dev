@@ -47,6 +47,11 @@ try:
     passwordbtn = info_form.find_element_by_id('ap_password')
     passwordbtn.send_keys(password)
 
+    rememberMe = WebDriverWait(driver, 10) \
+                           .until(EC.presence_of_element_located((By.NAME, 'rememberMe')))
+
+    rememberMe.click()
+
     info_form.submit()
 
     time.sleep(30)
