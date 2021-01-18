@@ -52,3 +52,4 @@ envelope_file = pathlib.Path('envelope.pdf')
 if envelope_file.exists():
     envelope_file.unlink()
 pdf.output('envelope.pdf', dest='F').encode('latin-1')
+os.system("lp -d printer envelope.pdf")
